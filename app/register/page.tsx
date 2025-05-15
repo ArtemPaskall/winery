@@ -1,11 +1,12 @@
+import st from "./style.module.scss"
 import { signIn, signOut, auth } from "@/auth"
 
-export default async function SignIn() {
+export default async function Register() {
   const session = await auth()
   console.log(session)
 
   return (
-    <>
+    <div className={st["register-block"]}>
       <form
         action={async () => {
           "use server"
@@ -24,6 +25,6 @@ export default async function SignIn() {
           <button type="submit">Signin OUT Google</button>
         </form>
       </div>
-    </>
+    </div>
   )
 }
