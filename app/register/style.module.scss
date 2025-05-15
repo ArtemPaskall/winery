@@ -6,3 +6,18 @@
 
   height: 100vh;
 }
+
+.modal {
+  width: fit-content;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 30px;
+  border-radius: 16px;
+  background-color: #fff;
+}
+
+.reg-header {
+  text-transform: uppercase;
+}

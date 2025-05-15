@@ -1,6 +1,7 @@
 import "../app/styles/globals.scss"
 import { Montserrat, Inter } from "next/font/google"
 import Head from "next/head"
+import { SessionProvider } from "next-auth/react"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -40,7 +41,9 @@ export default function RootLayout({
              чи просто любитель, наша колекція додасть елегантності та розкошів кожній події."
         />
       </Head>
-      <body>{children}</body>
+      <body>
+        <SessionProvider>{children}</SessionProvider>
+      </body>
     </html>
   )
 }
