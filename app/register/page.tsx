@@ -74,6 +74,7 @@ export default function Register() {
             <button type="submit" className={st["google-button"]}>
               <Image src="/Google.webp" alt="Google" width={50} height={50} />
               Sign out
+              uuuu
             </button>
           </form>
         </div>
