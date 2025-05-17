@@ -3,6 +3,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  position: relative;
 
   height: 100vh;
 }
@@ -67,4 +68,19 @@
   border-radius: 8px;
   cursor: pointer;
   font-size: 18px;
+}
+
+.home-link {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 20px;
+  transition: all 0.3s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
