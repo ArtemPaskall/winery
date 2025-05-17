@@ -5,7 +5,6 @@ import st from "./style.module.scss"
 import { useSession } from "next-auth/react"
 import { handleSignIn, handleSignOut } from "./actions"
 import Image from "next/image"
-import { redirect } from "next/navigation"
 
 export default function Register() {
   const { data: session } = useSession()
