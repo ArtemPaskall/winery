@@ -4,6 +4,8 @@ import { useState } from "react"
 import st from "./style.module.scss"
 import { useSession } from "next-auth/react"
 import { handleSignIn, handleSignOut } from "./actions"
+import Image from "next/image"
+import { redirect } from "next/navigation"
 
 export default function Register() {
   const { data: session } = useSession()
@@ -47,26 +49,35 @@ export default function Register() {
           <h2 className={st["reg-header"]}>Registration</h2>
 
           {!accessGranted ? (
-            <form onSubmit={handlePasswordSubmit}>
+            <form onSubmit={handlePasswordSubmit} className={st["form"]}>
               <input
                 type="password"
                 placeholder="Enter password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <button type="submit">Submit Password</button>
               {error && <p style={{ color: "red" }}>{error}</p>}
+              <button type="submit">Submit Password</button>
             </form>
           ) : (
             <form action={handleSignIn}>
-              <button type="submit">Sign in with Google</button>
+              <button type="submit" className={st["google-button"]}>
+                <Image src="/Google.webp" alt="Google" width={50} height={50} />
+                Sign in with Google
+              </button>
             </form>
           )}
         </div>
       ) : (
-        <form action={handleSignOut}>
-          <button type="submit">Sign out</button>
-        </form>
+        <div className={st["modal"]}>
+          <h2 className={st["reg-header"]}>Log out</h2>
+          <form action={handleSignOut}>
+            <button type="submit" className={st["google-button"]}>
+              <Image src="/Google.webp" alt="Google" width={50} height={50} />
+              Sign out
+            </button>
+          </form>
+        </div>
       )}
     </div>
   )

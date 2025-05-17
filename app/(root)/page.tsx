@@ -13,7 +13,7 @@ export default function Home() {
       <div> hello world</div>
       <div> hello world</div>
       <div> hello world</div>
-      <Link href="register">register</Link>
+      <Link href="/register">register</Link>
     </>
   )
 }
