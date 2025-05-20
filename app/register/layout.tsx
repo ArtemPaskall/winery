@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function RegistrationPage() {
   return (
     <>
-      <Register></Register>
+      <Register />
     </>
   )
 }
