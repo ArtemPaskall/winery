@@ -1,4 +1,5 @@
-import "../app/styles/globals.scss"
+import "../app/styles/globals.module.scss"
+import "../app/styles/reset.scss"
 import { Montserrat, Inter } from "next/font/google"
 import Head from "next/head"
 import { SessionProvider } from "next-auth/react"

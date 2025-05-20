@@ -1,4 +1,4 @@
-// import type { Metadata } from "next"
+import Header from "@/components/header/page"
 
 export default function HomeLayout({
   children,
@@ -7,7 +7,7 @@ export default function HomeLayout({
 }>) {
   return (
     <>
-      <header>asdfasdfasdfasdfasdf</header>
+      <Header />
       {children}
     </>
   )

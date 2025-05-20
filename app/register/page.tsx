@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import st from "./style.module.scss"
+import st from "./register.module.scss"
 import { useSession, signOut } from "next-auth/react"
 import { handleSignIn, handleSignOut } from "./actions"
 import Image from "next/image"
