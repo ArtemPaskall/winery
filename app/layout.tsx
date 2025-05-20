@@ -1,5 +1,5 @@
-import "../app/styles/globals.module.scss"
-// import "../app/styles/reset.scss"
+import "../app/styles/globals.scss"
+import "../app/styles/reset.scss"
 import { Montserrat, Inter } from "next/font/google"
 import Head from "next/head"
 import { SessionProvider } from "next-auth/react"
@@ -15,15 +15,6 @@ const inter = Inter({
   weight: ["400", "700"],
   variable: "--font-inter",
 })
-
-// export const metadata = {
-//   description: `Пориньте у світ витонченого ремесла з нашою колекцією преміальних,
-//    ручно виготовлених вин. Кожна пляшка розповідає історію відданості,
-//    пристрасті та майстерності. Відкрийте для себе ексклюзивні вина,
-//    що пропонують унікальні смаки та аромати.
-//    Незалежно від того, чи ви досвідчений дегустатор,
-//    чи просто любитель, наша колекція додасть елегантності та розкошів кожній події.`,
-// }
 
 export default function RootLayout({
   children,
