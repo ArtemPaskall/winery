@@ -8,7 +8,7 @@ export default function Header() {
     <div className={st["header"]}>
       <div className={"wrapp-1200"}>
         <div className={st["header-wrapp"]}>
-          <div> + Add product</div>
+          <Link href="/add-product">+ Add product</Link>
           <Link href="/register">register</Link>
         </div>
       </div>

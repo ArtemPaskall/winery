@@ -85,6 +85,13 @@ export default function Register() {
         </div>
       )}
       <Link href="/" className={st["home-link"]}>
+        <Image
+          src="/arrow-home-page.svg"
+          alt="Google"
+          width={20}
+          height={50}
+          className={st["arrow-img"]}
+        />
         Home Page
       </Link>
     </div>

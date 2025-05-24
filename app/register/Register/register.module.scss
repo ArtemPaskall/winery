@@ -71,6 +71,10 @@
 }
 
 .home-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
   position: absolute;
   top: 40px;
   left: 40px;
@@ -83,4 +87,7 @@
   &:hover {
     transform: scale(1.1);
   }
+}
+.arrow-img {
+  transform: rotate(180deg);
 }
