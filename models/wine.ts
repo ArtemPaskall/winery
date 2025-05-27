@@ -1,20 +1,7 @@
-import { Schema, Document, models, model } from "mongoose"
+import { Schema, models, model } from "mongoose"
+import { WineType } from "@/types"
 
-export interface IWine extends Document {
-  name: string
-  description: string
-  price: number
-  vintage: number // рік виробництва
-  alcoholContent: number // у відсотках
-  wineType: "red" | "white" | "rosé" | "sparkling" | "dessert" | "fortified"
-  country: string
-  volume: number // мл
-  imageUrl: string
-  createdAt: Date
-  updatedAt: Date
-}
-
-const WineSchema = new Schema<IWine>(
+const WineSchema = new Schema<WineType>(
   {
     name: { type: String, required: true },
     description: { type: String, required: true },
@@ -35,4 +22,4 @@ const WineSchema = new Schema<IWine>(
   }
 )
 
-export default models.Wine || model<IWine>("Wine", WineSchema)
+export default models.Wine || model<WineType>("Wine", WineSchema)

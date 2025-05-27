@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import Wine from "@/models/product" // твоя модель
+import Wine from "@/models/wine" // твоя модель
 import connectDB from "@/lib/mongoDB" // див. нижче
 
 export async function POST(req: Request) {
