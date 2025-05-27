@@ -37,3 +37,9 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 wine shop reference
 https://uk.wix.com/website-template/view/html/2363?originUrl=https%3A%2F%2Fuk.wix.com%2Fwebsite%2Ftemplates%2Fhtml%2Fonline-store%2F8&tpClick=view_button&esi=1e9fa519-9a33-4653-ab7d-5a4131d59b7c
+
+
+and 
+
+
+https://template.paradigma.website/
