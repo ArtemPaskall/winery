@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image"
 import Link from "next/link"
-import "./styles/globals.scss"
+import "../styles/globals.scss"
 
 export default function Error() {
   return (

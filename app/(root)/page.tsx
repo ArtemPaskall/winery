@@ -3,6 +3,7 @@ import { Metadata } from "next"
 import dbConnect from "@/lib/mongoDB"
 import Wine from "@/models/wine"
 import { WineType } from "@/types"
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "Home Page",
@@ -16,6 +17,7 @@ export default async function Home() {
   return (
     <>
       <div> hello world</div>
+      <Link href="/add-product">+ Add product</Link>
       <div>
         {wines.map((wine) => {
           return <div key={wine._id}>{wine.name}</div>
