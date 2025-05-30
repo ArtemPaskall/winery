@@ -46,40 +46,40 @@ export default function Register() {
     <div className={st["register-block"]}>
       {!user ? (
         <div className={st["modal"]}>
-          <h2 className={st["reg-header"]}>Registration</h2>
+          <h2 className={st["reg-header"]}>Зареєструватися</h2>
 
           {!accessGranted ? (
             <form onSubmit={handlePasswordSubmit} className={st["form"]}>
               <input
                 type="password"
-                placeholder="Enter password"
+                placeholder="Пароль реєстрації"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
               <div style={{ height: "20px" }}>
                 {error && <p style={{ color: "red" }}>{error}</p>}
               </div>
-              <button type="submit">Submit Password</button>
+              <button type="submit">Ввести пароль</button>
             </form>
           ) : (
             <form action={handleSignIn}>
               <button type="submit" className={st["google-button"]}>
                 <Image src="/Google.webp" alt="Google" width={50} height={50} />
-                Sign in with Google
+                Зареєструватися через Google
               </button>
             </form>
           )}
         </div>
       ) : (
         <div className={st["modal"]}>
-          <h2 className={st["reg-header"]}>Log out</h2>
+          <h2 className={st["reg-header"]}>Вийти</h2>
           <form action={handleSignOut}>
             <button
               onClick={() => signOut({ redirect: false })}
               className={st["google-button"]}
             >
               <Image src="/Google.webp" alt="Google" width={50} height={50} />
-              Sign out
+              Вийти з Google
             </button>
           </form>
         </div>
@@ -92,7 +92,7 @@ export default function Register() {
           height={50}
           className={st["arrow-img"]}
         />
-        Home Page
+        На головну
       </Link>
     </div>
   )

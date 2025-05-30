@@ -8,7 +8,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: true })
   } else {
     return NextResponse.json(
-      { success: false, message: "Incorrect password" },
+      { success: false, message: "Пароль не вірний" },
       { status: 401 }
     )
   }
