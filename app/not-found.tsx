@@ -18,6 +18,7 @@ export default function Error() {
           alt="comment image"
           width={0}
           height={0}
+          fill
           className="cloud-img"
         />
       </div>
@@ -26,6 +27,7 @@ export default function Error() {
         alt="man image"
         width={0}
         height={0}
+        fill
         className="not-found-img"
       />
     </div>
