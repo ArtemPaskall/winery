@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image"
 import Link from "next/link"
-import "../styles/globals.scss"
+import "./styles/globals.scss"
 
 export default function Error() {
   return (
@@ -16,16 +16,16 @@ export default function Error() {
         <Image
           src={"/cloud.png"}
           alt="comment image"
-          width={0}
-          height={0}
+          width={300}
+          height={200}
           className="cloud-img"
         />
       </div>
       <Image
         src={"/gru.png"}
         alt="man image"
-        width={0}
-        height={0}
+        width={300}
+        height={200}
         className="not-found-img"
       />
     </div>
