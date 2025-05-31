@@ -1,10 +1,25 @@
 .header {
   background-color: rgba(159, 62, 244, 0.562);
   width: 100%;
+  padding: 10px 0;
 }
 .header-wrapp {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
+}
+.avatar-wrapp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.user-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.user-name {
+  font-size: 14px;
 }
