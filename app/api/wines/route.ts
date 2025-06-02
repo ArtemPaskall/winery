@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server"
-import Wine from "@/models/wine" // твоя модель
-import connectDB from "@/lib/mongoDB" // див. нижче
+import Wine from "@/models/wine"
+import connectDB from "@/lib/mongoDB"
 
 export async function POST(req: Request) {
   try {
-    await connectDB() // підключення до бази
+    await connectDB() 
 
     const data = await req.json()
 

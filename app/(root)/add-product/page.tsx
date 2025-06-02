@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import "./add-product.scss" // додай цей рядок, щоб підключити стилі
+import "./add-product.scss"
 
 export default function AddWinePage() {
   const [formData, setFormData] = useState({
