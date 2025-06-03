@@ -12,7 +12,7 @@ export default function Header() {
   console.log(user)
 
   return (
-    <>
+    <header>
       <div className={st["header-top"]}>
         <div className="wrapp-1200">
           <div className={st["header-top-wrapp"]}>
@@ -23,7 +23,9 @@ export default function Header() {
             <div>
               {" "}
               {!user ? (
-                <Link href="/register">Вхід</Link>
+                <Link href="/register" className={st["enter-text"]}>
+                  Вхід
+                </Link>
               ) : (
                 <Link href={"/register"} className={st["avatar-wrapp"]}>
                   <Image
@@ -72,6 +74,13 @@ export default function Header() {
           </div>
         </div>
       </div>
-    </>
+      <Image
+        src={"/header-img.jpg"}
+        alt="Вино"
+        width={1000}
+        height={500}
+        className={st["header-img"]}
+      ></Image>
+    </header>
   )
 }
