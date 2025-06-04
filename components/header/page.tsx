@@ -1,10 +1,11 @@
 "use client"
 import st from "./header.module.scss"
-import "@/app/styles/globals.scss"
+import "@/app/[locale]/styles/globals.scss"
 import React from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { useSession } from "next-auth/react"
+import LangSwitcher from "../langSwitcher/page"
 
 export default function Header() {
   const { data: session } = useSession()
@@ -16,7 +17,7 @@ export default function Header() {
       <div className={st["header-top"]}>
         <div className="wrapp-1200">
           <div className={st["header-top-wrapp"]}>
-            <div></div>
+            <LangSwitcher></LangSwitcher>
             <div className={st["percent-wrapp"]}>
               Отримай знижку <span className={st["percent"]}>10%</span>
             </div>
