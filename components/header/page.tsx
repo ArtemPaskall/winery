@@ -12,7 +12,7 @@ export default function Header() {
   console.log(user)
 
   return (
-    <header>
+    <header className={st["header"]}>
       <div className={st["header-top"]}>
         <div className="wrapp-1200">
           <div className={st["header-top-wrapp"]}>
@@ -77,8 +77,7 @@ export default function Header() {
       <Image
         src={"/header-img.jpg"}
         alt="Вино"
-        width={1000}
-        height={500}
+        fill
         className={st["header-img"]}
       ></Image>
     </header>
