@@ -1,4 +1,3 @@
-// import { useTranslations } from "next-intl"
 import { getTranslations } from "next-intl/server"
 import { Link } from "@/i18n/navigation"
 import st from "./page.module.scss"
@@ -6,8 +5,7 @@ import { Metadata } from "next"
 import dbConnect from "@/lib/mongoDB"
 import Wine from "@/models/wine"
 import { WineType } from "@/types"
-// import Link from "next/link"
-import "@/app/[locale]/styles/globals.scss"
+import "@/app/styles/globals.scss"
 
 export const dynamic = "force-dynamic"
 

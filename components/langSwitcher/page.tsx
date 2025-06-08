@@ -1,5 +1,6 @@
 "use client"
 import { usePathname, useRouter } from "next/navigation"
+import Image from "next/image"
 
 export default function LangSwitcher() {
   const router = useRouter()
@@ -14,8 +15,10 @@ export default function LangSwitcher() {
   }
 
   return (
-    <button onClick={toggleLocale}>
-      {currentLocale === "en" ? "🇺🇸 English" : "🇺🇦 Українська"}
-    </button>
+    <div onClick={toggleLocale}>
+      <Image src={"/globe.svg"} width={20} height={20} alt="Мова"></Image>
+      <div>UK</div>
+      <div>EN</div>
+    </div>
   )
 }

@@ -1,6 +1,6 @@
 "use client"
 import st from "./header.module.scss"
-import "@/app/[locale]/styles/globals.scss"
+import "@/app/styles/globals.scss"
 import React from "react"
 import Link from "next/link"
 import Image from "next/image"
@@ -11,6 +11,7 @@ export default function Header() {
   const { data: session } = useSession()
   const user = session?.user ?? null
   console.log(user)
+
 
   return (
     <header className={st["header"]}>
