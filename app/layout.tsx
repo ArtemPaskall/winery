@@ -2,7 +2,6 @@ import { NextIntlClientProvider } from "next-intl"
 import "./styles/globals.scss"
 import { Montserrat, Inter } from "next/font/google"
 import { SessionProvider } from "next-auth/react"
-import Head from "next/head"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -27,9 +26,9 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className={`${montserrat.variable} ${inter.variable}`}>
-      <Head>
-        <link rel="icon" href="./favicon.png" />
-      </Head>
+      <head>
+        <link rel="icon" type="image/png" href="/favicon.png" />
+      </head>
       <body>
         <NextIntlClientProvider>
           <SessionProvider>{children}</SessionProvider>
