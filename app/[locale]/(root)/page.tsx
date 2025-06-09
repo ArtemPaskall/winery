@@ -15,11 +15,9 @@ type Props = {
   }
 }
 
-export async function generateMetadata(
-  props: Promise<Props>
-): Promise<Metadata> {
-  const { params } = await props
-  const { locale } = await params
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const { params } = props
+  const { locale } = params
 
   const t = await getTranslations({
     locale,
