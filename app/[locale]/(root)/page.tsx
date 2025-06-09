@@ -1,7 +1,6 @@
 import { getTranslations } from "next-intl/server"
 import { Link } from "@/i18n/navigation"
 import st from "./page.module.scss"
-import { Metadata } from "next"
 import dbConnect from "@/lib/mongoDB"
 import Wine from "@/models/wine"
 import { WineType } from "@/types"
@@ -12,16 +11,14 @@ export const dynamic = "force-dynamic"
 export async function generateMetadata({
   params,
 }: {
-  params: { locale: string };
-}): Promise<Metadata> {
-  const t = await getTranslations({
-    locale: params.locale,
-    namespace: "HomePage",
-  });
+  params: { locale: string }
+}) {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: "HomePage" })
 
   return {
     title: t("title"),
-  };
+  }
 }
 
 export default async function Home() {
