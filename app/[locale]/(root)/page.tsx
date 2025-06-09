@@ -5,24 +5,11 @@ import dbConnect from "@/lib/mongoDB"
 import Wine from "@/models/wine"
 import { WineType } from "@/types"
 import "@/app/styles/globals.scss"
-import type { Metadata } from "next"
 
 export const dynamic = "force-dynamic"
 
-type Props = {
-  params: {
-    locale: string
-  }
-}
-
-export async function generateMetadata(props: Props): Promise<Metadata> {
-  const { params } = props
-  const { locale } = params
-
-  const t = await getTranslations({
-    locale,
-    namespace: "HomePage",
-  })
+export async function generateMetadata() {
+  const t = await getTranslations("HomePage")
 
   return {
     title: t("title"),
