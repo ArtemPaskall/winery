@@ -12,7 +12,6 @@ export default function Header() {
   const user = session?.user ?? null
   console.log(user)
 
-
   return (
     <header className={st["header"]}>
       <div className={st["header-top"]}>
@@ -76,12 +75,12 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <Image
-        src={"/header-img.jpg"}
-        alt="Вино"
-        fill
-        className={st["header-img"]}
-      ></Image>
+      <div className={st["header-title-wrapp"]}>
+        <div className={`${"wrapp-1200"} ${"header-title-inner"}`}>
+          <h1 className={st["header-1"]}>Крафтове натуральне вино</h1>
+          <div>опим</div>
+        </div>
+      </div>
     </header>
   )
 }
