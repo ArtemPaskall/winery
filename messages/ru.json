@@ -1,5 +1,9 @@
 {
   "HomePage": {
-    "title": "Привет, мир!"
+    "title": "Главная"
+  },
+  "Header": {
+    "discount": "Получите скидку",
+    "percent": "10%"
   }
 }

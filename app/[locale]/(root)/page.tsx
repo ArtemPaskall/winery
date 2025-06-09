@@ -9,8 +9,19 @@ import "@/app/styles/globals.scss"
 
 export const dynamic = "force-dynamic"
 
-export const metadata: Metadata = {
-  title: "Home Page",
+export async function generateMetadata(
+  props: Promise<{ params: { locale: string } }>
+): Promise<Metadata> {
+  const { params } = await props
+
+  const t = await getTranslations({
+    locale: params.locale,
+    namespace: "HomePage",
+  })
+
+  return {
+    title: t("title"),
+  }
 }
 
 export default async function Home() {
@@ -18,7 +29,6 @@ export default async function Home() {
   await dbConnect()
   const wines = await Wine.find({}).lean<WineType[]>()
 
-  console.log(wines)
   return (
     <main className="wrapp-1200">
       <h1>{t("title")}</h1>

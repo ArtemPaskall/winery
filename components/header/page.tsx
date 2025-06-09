@@ -1,17 +1,14 @@
-"use client"
 import st from "./header.module.scss"
 import "@/app/styles/globals.scss"
 import React from "react"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import Image from "next/image"
-import { useSession } from "next-auth/react"
 import LangSwitcher from "../langSwitcher/page"
+import LogBlock from "@/components/logBlock/page"
+import { getTranslations } from "next-intl/server"
 
-export default function Header() {
-  const { data: session } = useSession()
-  const user = session?.user ?? null
-  console.log(user)
-
+export default async function Header() {
+  const t = await getTranslations("Header")
   return (
     <header className={st["header"]}>
       <div className={st["header-top"]}>
@@ -19,26 +16,11 @@ export default function Header() {
           <div className={st["header-top-wrapp"]}>
             <LangSwitcher></LangSwitcher>
             <div className={st["percent-wrapp"]}>
-              Отримай знижку <span className={st["percent"]}>10%</span>
+              {t("discount")}{" "}
+              <span className={st["percent"]}>{t("percent")}</span>
             </div>
             <div>
-              {" "}
-              {!user ? (
-                <Link href="/register" className={st["enter-text"]}>
-                  Вхід
-                </Link>
-              ) : (
-                <Link href={"/register"} className={st["avatar-wrapp"]}>
-                  <Image
-                    src={`${user.image}`}
-                    alt="головний логотип"
-                    width={50}
-                    height={50}
-                    className={st["user-img"]}
-                  />
-                  <p className={st["user-name"]}>{user.name}</p>
-                </Link>
-              )}
+              <LogBlock />
             </div>
           </div>
         </div>

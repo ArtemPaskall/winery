@@ -1,5 +1,9 @@
 {
   "HomePage": {
-    "title": "Hello world!"
+    "title": "Home"
+  },
+  "Header": {
+    "discount": "Get a discount",
+    "percent": "10%"
   }
 }
