@@ -9,11 +9,13 @@ import type { Metadata } from "next"
 
 export const dynamic = "force-dynamic"
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { locale: string }
-}): Promise<Metadata> {
+type Props = {
+  params: {
+    locale: string
+  }
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: "HomePage" })
 
