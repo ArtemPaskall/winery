@@ -5,6 +5,7 @@ import dbConnect from "@/lib/mongoDB"
 import Wine from "@/models/wine"
 import { WineType } from "@/types"
 import "@/app/styles/globals.scss"
+import WineCard from "@/components/card/page"
 
 export const dynamic = "force-dynamic"
 
@@ -28,16 +29,9 @@ export default async function Home() {
       <div className={st["main-content"]}>
         <div className={st["left-menu"]}>left-menu</div>
         <div className={st["prod-block"]}>
-          {wines.map((wine) => {
-            return (
-              <div key={wine._id} className={st["product-item"]}>
-                <div> {wine.name}</div>
-                <div> {wine.description}</div>
-                <div> {wine.price}</div>
-                <div> {wine.wineType}</div>
-              </div>
-            )
-          })}
+          {wines.map((wine) => (
+            <WineCard key={wine._id.toString()} wine={wine} />
+          ))}
         </div>
       </div>
     </main>
