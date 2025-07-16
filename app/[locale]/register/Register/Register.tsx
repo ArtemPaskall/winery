@@ -10,7 +10,6 @@ import {Link} from '@/i18n/navigation';
 export default function Register() {
   const { data: session } = useSession()
   const user = session?.user ?? null
-  console.log(user)
 
   const [password, setPassword] = useState("")
   const [accessGranted, setAccessGranted] = useState(false)
