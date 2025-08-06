@@ -7,6 +7,7 @@ import Image from "next/image"
 export default function LogBlock() {
   const { data: session } = useSession()
   const user = session?.user ?? null
+
   return (
     <div>
       {!user ? (
@@ -14,7 +15,7 @@ export default function LogBlock() {
           Вхід
         </Link>
       ) : (
-        <Link href={"/register"} className={st["avatar-wrapp"]}>
+        <Link href="/register" className={st["avatar-wrapp"]}>
           <Image
             src={`${user.image}`}
             alt="головний логотип"

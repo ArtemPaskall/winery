@@ -25,10 +25,10 @@ export default async function Home() {
   return (
     <main className="wrapp-1200">
       <h1>{t("title")}</h1>
-      <Link href="/add-product">+ Add product</Link>
+      <Link href="/add-product">{t("add-product")}</Link>
       <div className={st["main-content"]}>
         <div className={st["left-menu"]}>left-menu</div>
-        <div className={st["prod-block"]}>
+        <div className={st["card-block"]}> 
           {wines.map((wine) => (
             <WineCard key={wine._id.toString()} wine={wine} />
           ))}

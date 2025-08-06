@@ -59,7 +59,7 @@ export default async function Header() {
       </div>
       <div className={st["header-title-wrapp"]}>
         <div className={`${"wrapp-1200"} ${"header-title-inner"}`}>
-          <h1 className={st["header-1"]}>Крафтове натуральне вино</h1>
+          <h1 className={st["header-1"]}>{t("main-header")}</h1>
           <div>опим</div>
         </div>
       </div>

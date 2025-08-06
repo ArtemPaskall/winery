@@ -1,11 +1,10 @@
 "use client"
-
 import { useState } from "react"
 import st from "./register.module.scss"
 import { useSession, signOut } from "next-auth/react"
 import { handleSignIn, handleSignOut } from "./actions"
 import Image from "next/image"
-import {Link} from '@/i18n/navigation';
+import { Link } from "@/i18n/navigation"
 
 export default function Register() {
   const { data: session } = useSession()

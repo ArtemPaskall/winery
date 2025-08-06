@@ -1,11 +1,10 @@
-import { Metadata } from "next"
 import Register from "./Register/Register"
 
-export const metadata: Metadata = {
-  title: "Registration Page",
+export const metadata = {
+  title: "Регістрація",
 }
 
-export default function RegistrationPage() {
+export default async function RegistrationPage() {
   return (
     <>
       <Register />

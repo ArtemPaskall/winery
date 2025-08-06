@@ -1,9 +1,16 @@
 {
   "HomePage": {
-    "title": "Home"
+    "title": "Home",
+    "add-product": "Add Wine"
   },
   "Header": {
     "discount": "Get a discount",
-    "percent": "10%"
+    "percent": "10%",
+    "main-header": "Craft Natural Wine"
+  },
+  "Registrarion": {
+    "title": "Registration Page",
+    "registrate": "Register",
+    "main": "Home"
   }
 }

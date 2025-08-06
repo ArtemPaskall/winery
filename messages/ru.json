@@ -1,9 +1,16 @@
 {
   "HomePage": {
-    "title": "Главная"
+    "title": "Главная",
+    "add-product": "Добавить вино"
   },
   "Header": {
     "discount": "Получите скидку",
-    "percent": "10%"
+    "percent": "10%",
+    "main-header": "Крафтовое натуральное вино"
+  },
+  "Registrarion": {
+    "title": "Страница регистрации",
+    "registrate": "Зарегистрироваться",
+    "main": "На главную"
   }
 }
