@@ -11,7 +11,6 @@ export default function AddWinePage() {
     vintage: "",
     alcoholContent: "",
     wineType: "red",
-    country: "",
     volume: "",
     imageUrl: "",
   })
@@ -48,7 +47,6 @@ export default function AddWinePage() {
         vintage: "",
         alcoholContent: "",
         wineType: "red",
-        country: "",
         volume: "",
         imageUrl: "",
       })
@@ -84,24 +82,6 @@ export default function AddWinePage() {
           step="0.01"
           required
         />
-        <input
-          name="vintage"
-          value={formData.vintage}
-          onChange={handleChange}
-          placeholder="Рік урожаю"
-          type="number"
-          required
-        />
-        <input
-          name="alcoholContent"
-          value={formData.alcoholContent}
-          onChange={handleChange}
-          placeholder="Вміст алкоголю (%)"
-          type="number"
-          step="0.1"
-          required
-        />
-
         <select
           name="wineType"
           value={formData.wineType}
@@ -115,14 +95,6 @@ export default function AddWinePage() {
           <option value="dessert">Десертне</option>
           <option value="fortified">Кріплене</option>
         </select>
-
-        <input
-          name="country"
-          value={formData.country}
-          onChange={handleChange}
-          placeholder="Країна"
-          required
-        />
         <input
           name="volume"
           value={formData.volume}

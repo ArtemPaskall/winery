@@ -5,12 +5,6 @@
   },
   "Header": {
     "discount": "Get a discount",
-    "percent": "10%",
     "main-header": "Craft Natural Wine"
-  },
-  "Registrarion": {
-    "title": "Registration Page",
-    "registrate": "Register",
-    "main": "Home"
   }
 }

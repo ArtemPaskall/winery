@@ -16,8 +16,7 @@ export default async function Header() {
           <div className={st["header-top-wrapp"]}>
             <LangSwitcher></LangSwitcher>
             <div className={st["percent-wrapp"]}>
-              {t("discount")}{" "}
-              <span className={st["percent"]}>{t("percent")}</span>
+              {t("discount")} <span className={st["percent"]}>10%</span>
             </div>
             <div>
               <LogBlock />
