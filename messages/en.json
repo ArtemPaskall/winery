@@ -6,5 +6,9 @@
   "Header": {
     "discount": "Get a discount",
     "main-header": "Craft Natural Wine"
+  },
+  "WineCard": {
+    "add-to-cart": "Add to cart",
+    "quick-view": "Quick View"
   }
 }

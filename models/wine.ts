@@ -1,25 +1,29 @@
-import { Schema, models, model } from "mongoose"
-import { WineType } from "@/types"
+import { Schema, model, models } from "mongoose"
 
-const WineSchema = new Schema<WineType>(
+const WineSchema = new Schema(
   {
-    name: { type: String, required: true },
-    description: { type: String, required: true },
-    price: { type: Number, required: true },
-    vintage: { type: Number, required: true },
-    alcoholContent: { type: Number, required: true },
+    name: {
+      uk: { type: String, required: true },
+      en: { type: String, required: true },
+      ru: { type: String, required: true },
+    },
+    description: {
+      uk: { type: String, required: true },
+      en: { type: String, required: true },
+      ru: { type: String, required: true },
+    },
     wineType: {
       type: String,
       enum: ["red", "white", "rosé", "sparkling", "dessert", "fortified"],
       required: true,
     },
-    country: { type: String, required: true },
-    volume: { type: Number, required: true }, // наприклад 750 мл
+    volume: { type: Number, required: true },
+    price: { type: Number, required: true },
     imageUrl: { type: String, required: false },
   },
   {
-    timestamps: true, // автоматично додає createdAt і updatedAt
+    timestamps: true,
   }
 )
 
-export default models.Wine || model<WineType>("Wine", WineSchema)
+export default models.Wine || model("Wine", WineSchema)

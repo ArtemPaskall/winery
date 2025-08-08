@@ -6,14 +6,11 @@ export type UserType = {
 
 export type WineType = {
   _id: string
-  name: string
+  name: { uk: string; ru: string; en: string }
   description: string
-  price: number
-  vintage: number // рік виробництва
-  alcoholContent: number // у відсотках
   wineType: "red" | "white" | "rosé" | "sparkling" | "dessert" | "fortified"
-  country: string
   volume: number
+  price: number
   imageUrl: string
   createdAt: Date
   updatedAt: Date

@@ -6,5 +6,9 @@
   "Header": {
     "discount": "Отримай знижку",
     "main-header": "Крафтове натуральне вино"
+  },
+  "WineCard": {
+    "add-to-cart": "Додати в корзину",
+    "quick-view": "Переглянути"
   }
 }

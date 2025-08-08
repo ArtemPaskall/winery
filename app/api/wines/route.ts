@@ -4,7 +4,7 @@ import connectDB from "@/lib/mongoDB"
 
 export async function POST(req: Request) {
   try {
-    await connectDB() 
+    await connectDB()
 
     const data = await req.json()
 
@@ -13,8 +13,13 @@ export async function POST(req: Request) {
     return NextResponse.json(newWine, { status: 201 })
   } catch (error) {
     console.error("DB error:", error)
+
     return NextResponse.json(
-      { message: "Помилка при створенні вина" },
+      {
+        // Якщо error — обʼєкт Error, повертаємо його повідомлення, інакше загальний текст
+        message:
+          error instanceof Error ? error.message : "Помилка при створенні вина",
+      },
       { status: 500 }
     )
   }
