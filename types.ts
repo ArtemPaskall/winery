@@ -4,14 +4,24 @@ export type UserType = {
   image?: string | null
 }
 
+export type Multilang = { uk: string; en: string; ru: string }
+
+export type WineCategory =
+  | "red"
+  | "white"
+  | "rosé"
+  | "sparkling"
+  | "dessert"
+  | "fortified"
+
 export type WineType = {
   _id: string
-  name: { uk: string; ru: string; en: string }
-  description: string
-  wineType: "red" | "white" | "rosé" | "sparkling" | "dessert" | "fortified"
+  name: Multilang
+  description: Multilang
+  WineCategory: WineCategory
   volume: number
   price: number
-  imageUrl: string
+  imageUrl?: string
   createdAt: Date
   updatedAt: Date
 }

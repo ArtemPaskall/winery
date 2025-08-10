@@ -15,6 +15,10 @@ const inter = Inter({
   variable: "--font-inter",
 })
 
+export const metadata = {
+  title: 'Winery'
+}
+
 export default async function RootLayout({
   children,
   params,

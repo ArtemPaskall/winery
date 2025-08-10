@@ -1,71 +1,64 @@
 "use client"
 
-import { useState } from "react"
-import "./add-product.scss"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod"
+import st from "./add-product.module.scss"
 
-type Multilang = { uk: string; en: string; ru: string }
+const wineSchema = z.object({
+  name: z.object({
+    uk: z.string().min(1, "Обов'язково"),
+    en: z.string().min(1, "Required"),
+    ru: z.string().min(1, "Обязательно"),
+  }),
+  description: z.object({
+    uk: z.string().min(1, "Обов'язково"),
+    en: z.string().min(1, "Required"),
+    ru: z.string().min(1, "Обязательно"),
+  }),
+  WineCategory: z.enum(
+    ["red", "white", "rosé", "sparkling", "dessert", "fortified"],
+    {
+      required_error: "Оберіть категорію",
+    }
+  ),
+  volume: z.string().min(1, "Обов'язково"),
+  price: z.string().min(1, "Обов'язково"),
+  imageUrl: z.string().url("Некоректний URL").optional().or(z.literal("")),
+})
 
-type WineFormData = {
-  name: Multilang
-  description: Multilang
-  wineType: string
-  volume: string
-  price: string
-  imageUrl: string
-}
+type WineFormData = z.infer<typeof wineSchema>
 
 const initialFormData: WineFormData = {
   name: { uk: "", en: "", ru: "" },
   description: { uk: "", en: "", ru: "" },
-  wineType: "red",
+  WineCategory: "red",
   volume: "",
   price: "",
   imageUrl: "",
 }
 
 export default function AddWinePage() {
-  const [formData, setFormData] = useState<WineFormData>(initialFormData)
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<WineFormData>({
+    resolver: zodResolver(wineSchema),
+    defaultValues: initialFormData,
+  })
 
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
-  ) => {
-    const { name, value, dataset } = e.target
-
-    if (dataset.lang) {
-      const lang = dataset.lang as keyof Multilang
-      setFormData((prev) => ({
-        ...prev,
-        [name]: {
-          ...prev[name as keyof Pick<WineFormData, "name" | "description">],
-          [lang]: value,
-        },
-      }))
-    } else {
-      setFormData((prev) => ({
-        ...prev,
-        [name]: value,
-      }))
-    }
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-
+  const onSubmit = async (data: WineFormData) => {
     const response = await fetch("/api/wines", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ...formData,
-        price: parseFloat(formData.price),
-        volume: parseInt(formData.volume),
-      }),
+      body: JSON.stringify(data),
     })
 
     if (response.ok) {
       alert("Вино додано!")
-      setFormData(initialFormData)
+      reset()
     } else {
       try {
         const errorData = await response.json()
@@ -79,61 +72,39 @@ export default function AddWinePage() {
   }
 
   return (
-    <div className="form-wrapper">
+    <div className={st["form-wrapper"]}>
       <h1>Додати нове вино</h1>
-      <form onSubmit={handleSubmit} className="wine-form">
+      <form onSubmit={handleSubmit(onSubmit)} className={st["wine-form"]}>
         <h3>Назва</h3>
-        <input
-          name="name"
-          data-lang="uk"
-          value={formData.name.uk}
-          onChange={handleChange}
-          placeholder="Назва українською"
-        />
-        <input
-          name="name"
-          data-lang="en"
-          value={formData.name.en}
-          onChange={handleChange}
-          placeholder="Name in English"
-        />
-        <input
-          name="name"
-          data-lang="ru"
-          value={formData.name.ru}
-          onChange={handleChange}
-          placeholder="Название на русском"
-        />
+        <input {...register("name.uk")} placeholder="Назва українською" />
+        {errors.name?.uk && <p>{errors.name.uk.message}</p>}
+
+        <input {...register("name.en")} placeholder="Name in English" />
+        {errors.name?.en && <p>{errors.name.en.message}</p>}
+
+        <input {...register("name.ru")} placeholder="Название на русском" />
+        {errors.name?.ru && <p>{errors.name.ru.message}</p>}
 
         <h3>Опис</h3>
         <textarea
-          name="description"
-          data-lang="uk"
-          value={formData.description.uk}
-          onChange={handleChange}
+          {...register("description.uk")}
           placeholder="Опис українською"
         />
+        {errors.description?.uk && <p>{errors.description.uk.message}</p>}
+
         <textarea
-          name="description"
-          data-lang="en"
-          value={formData.description.en}
-          onChange={handleChange}
+          {...register("description.en")}
           placeholder="Description in English"
         />
+        {errors.description?.en && <p>{errors.description.en.message}</p>}
+
         <textarea
-          name="description"
-          data-lang="ru"
-          value={formData.description.ru}
-          onChange={handleChange}
+          {...register("description.ru")}
           placeholder="Описание на русском"
         />
+        {errors.description?.ru && <p>{errors.description.ru.message}</p>}
 
-        <select
-          name="wineType"
-          value={formData.wineType}
-          onChange={handleChange}
-          required
-        >
+        <select {...register("WineCategory")}>
           <option value="red">Червоне</option>
           <option value="white">Біле</option>
           <option value="rosé">Рожеве</option>
@@ -141,30 +112,24 @@ export default function AddWinePage() {
           <option value="dessert">Десертне</option>
           <option value="fortified">Кріплене</option>
         </select>
+        {errors.WineCategory && <p>{errors.WineCategory.message}</p>}
+
+        <input type="number" {...register("volume")} placeholder="Обʼєм (мл)" />
+        {errors.volume && <p>{errors.volume.message}</p>}
 
         <input
-          name="volume"
-          value={formData.volume}
-          onChange={handleChange}
-          placeholder="Обʼєм (мл)"
-          type="number"
-          required
-        />
-        <input
-          name="price"
-          value={formData.price}
-          onChange={handleChange}
-          placeholder="Ціна"
           type="number"
           step="0.01"
-          required
+          {...register("price")}
+          placeholder="Ціна"
         />
+        {errors.price && <p>{errors.price.message}</p>}
+
         <input
-          name="imageUrl"
-          value={formData.imageUrl}
-          onChange={handleChange}
+          {...register("imageUrl")}
           placeholder="URL зображення (необов'язково)"
         />
+        {errors.imageUrl && <p>{errors.imageUrl.message}</p>}
 
         <button type="submit">Додати</button>
       </form>
