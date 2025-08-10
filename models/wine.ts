@@ -12,13 +12,13 @@ const WineSchema = new Schema(
       en: { type: String, required: true },
       ru: { type: String, required: true },
     },
-    wineType: {
+    WineCategory: {
       type: String,
       enum: ["red", "white", "rosé", "sparkling", "dessert", "fortified"],
       required: true,
     },
-    volume: { type: Number, required: true },
-    price: { type: Number, required: true },
+    volume: { type: String, required: true },
+    price: { type: String, required: true },
     imageUrl: { type: String, required: false },
   },
   {

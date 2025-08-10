@@ -16,7 +16,6 @@ export async function POST(req: Request) {
 
     return NextResponse.json(
       {
-        // Якщо error — обʼєкт Error, повертаємо його повідомлення, інакше загальний текст
         message:
           error instanceof Error ? error.message : "Помилка при створенні вина",
       },
