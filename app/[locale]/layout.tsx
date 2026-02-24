@@ -3,7 +3,6 @@ import "./styles/globals.scss"
 import { Montserrat, Inter } from "next/font/google"
 import { SessionProvider } from "next-auth/react"
 import { getMessages } from "next-intl/server"
-import { Locale } from "../../types"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
