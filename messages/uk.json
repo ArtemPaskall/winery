@@ -10,5 +10,22 @@
   "WineCard": {
     "add-to-cart": "Додати в корзину",
     "quick-view": "Переглянути"
+  },
+  "AddWine": {
+    "title": "Додати нове вино",
+    "name": "Назва",
+    "description": "Опис",
+    "WineCategory": {
+      "red": "Червоне",
+      "white": "Біле",
+      "rose": "Рожеве",
+      "sparkling": "Ігристе",
+      "dessert": "Десертне",
+      "fortified": "Кріплене"
+    },
+    "submit": "Додати",
+    "price": "Ціна",
+    "url-img": "URL зображення",
+    "volume": "Обʼєм (мл)"
   }
 }

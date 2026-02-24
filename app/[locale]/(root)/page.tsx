@@ -4,7 +4,6 @@ import st from "./page.module.scss"
 import dbConnect from "@/lib/mongoDB"
 import Wine from "@/models/wine"
 import { WineType } from "@/types"
-import "@/app/styles/globals.scss"
 import WineCard from "@/components/card/page"
 
 export const dynamic = "force-dynamic"
@@ -28,7 +27,7 @@ export default async function Home() {
       <Link href="/add-product">{t("add-product")}</Link>
       <div className={st["main-content"]}>
         <div className={st["left-menu"]}>left-menu</div>
-        <div className={st["card-block"]}> 
+        <div className={st["card-block"]}>
           {wines.map((wine) => (
             <WineCard key={wine._id.toString()} wine={wine} />
           ))}

@@ -8,15 +8,14 @@
   border-radius: 8px;
 }
 
-// h1 {
-//   text-align: left;
-//   margin-bottom: 1.5rem;
-// }
+.form-header-1 {
+  font-size: 22px;
+  font-weight: 600;
+}
 
 .wine-form {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
 }
 
 .wine-form input,
@@ -26,6 +25,8 @@
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
+  margin-top: 4px;
+  outline: none;
 }
 
 .wine-form textarea {
@@ -42,8 +43,23 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background 0.2s ease;
+  margin-top: 20px;
 }
 
 .wine-form button:hover {
   background-color: #45a049;
+}
+
+.error-wrapp {
+  height: 12px;
+  margin-top: 4px;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+.form-label {
+  margin-top: 20px;
 }

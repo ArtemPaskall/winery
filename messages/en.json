@@ -10,5 +10,22 @@
   "WineCard": {
     "add-to-cart": "Add to cart",
     "quick-view": "Quick View"
+  },
+  "AddWine": {
+    "title": "Add New Wine",
+    "name": "Name",
+    "description": "Description",
+    "WineCategory": {
+      "red": "Red",
+      "white": "White",
+      "rose": "Rose",
+      "sparkling": "Sparkling",
+      "dessert": "Dessert",
+      "fortified": "Fortified"
+    },
+    "submit": "Add",
+    "price": "Price",
+    "url-img": "Image URL",
+    "volume": "Volume (ml)"
   }
 }

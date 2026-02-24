@@ -2,6 +2,8 @@ import { NextIntlClientProvider } from "next-intl"
 import "./styles/globals.scss"
 import { Montserrat, Inter } from "next/font/google"
 import { SessionProvider } from "next-auth/react"
+import { getMessages } from "next-intl/server"
+import { Locale } from "../../types"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -16,7 +18,7 @@ const inter = Inter({
 })
 
 export const metadata = {
-  title: 'Winery'
+  title: "Winery",
 }
 
 export default async function RootLayout({
@@ -24,9 +26,10 @@ export default async function RootLayout({
   params,
 }: Readonly<{
   children: React.ReactNode
-  params: Promise<{ locale: string }>
+  params: { locale: Locale }
 }>) {
-  const { locale } = await params
+  const { locale } = params
+  const messages = await getMessages()
 
   return (
     <html lang={locale} className={`${montserrat.variable} ${inter.variable}`}>
@@ -34,7 +37,7 @@ export default async function RootLayout({
         <link rel="icon" type="image/png" href="/favicon.png" />
       </head>
       <body>
-        <NextIntlClientProvider>
+        <NextIntlClientProvider locale={locale} messages={messages}>
           <SessionProvider>{children}</SessionProvider>
         </NextIntlClientProvider>
       </body>

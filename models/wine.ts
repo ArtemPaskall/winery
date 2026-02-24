@@ -14,7 +14,7 @@ const WineSchema = new Schema(
     },
     WineCategory: {
       type: String,
-      enum: ["red", "white", "rosé", "sparkling", "dessert", "fortified"],
+      enum: ["red", "white", "rose", "sparkling", "dessert", "fortified"],
       required: true,
     },
     volume: { type: String, required: true },

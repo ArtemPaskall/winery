@@ -10,5 +10,22 @@
   "WineCard": {
     "add-to-cart": "Добавить в корзину",
     "quick-view": "Посмотреть"
+  },
+  "AddWine": {
+    "title": "Добавить новое вино",
+    "name": "Название",
+    "description": "Описание",
+    "WineCategory": {
+      "red": "Красное",
+      "white": "Белое",
+      "rose": "Розовое",
+      "sparkling": "Игристое",
+      "dessert": "Десертное",
+      "fortified": "Креплёное"
+    },
+    "submit": "Добавить",
+    "price": "Цена",
+    "url-img": "URL изображения",
+    "volume": "Объём (мл)"
   }
 }

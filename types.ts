@@ -6,6 +6,8 @@ export type UserType = {
 
 export type Multilang = { uk: string; en: string; ru: string }
 
+export type Locale = keyof Multilang
+
 export type WineCategory =
   | "red"
   | "white"

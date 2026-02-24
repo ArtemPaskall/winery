@@ -1,5 +1,5 @@
 import st from "./header.module.scss"
-import "@/app/styles/globals.scss"
+// import "@/app/styles/globals.scss"
 import React from "react"
 import { Link } from "@/i18n/navigation"
 import Image from "next/image"
