@@ -1,14 +1,15 @@
-// import { getMessages } from "next-intl/server"
+import { getMessages } from "next-intl/server"
 import AddWineForm from "./AddWineForm/page"
-import { Locale } from "../../../../types"
 
 export default async function AddWinePage({
-  // params,
+  params,
 }: {
-  params: { locale: Locale }
+  params: Promise<{ locale: string }>
 }) {
-  // const messages = await getMessages(params.locale)
-  // console.log(messages)
+  const { locale } = await params
+
+  const messages = await getMessages({ locale })
+  console.log(messages)
 
   return <AddWineForm />
 }
