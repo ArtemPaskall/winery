@@ -1,10 +1,10 @@
 "use client"
 import { useSession } from "next-auth/react"
 import { Link } from "@/i18n/navigation"
-import st from "./logBlock.module.scss"
+import st from "./logInBlock.module.scss"
 import Image from "next/image"
 
-export default function LogBlock() {
+export default function LogInBlock() {
   const { data: session } = useSession()
   const user = session?.user ?? null
 

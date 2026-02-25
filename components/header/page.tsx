@@ -4,7 +4,7 @@ import React from "react"
 import { Link } from "@/i18n/navigation"
 import Image from "next/image"
 import LangSwitcher from "../langSwitcher/page"
-import LogBlock from "@/components/logBlock/page"
+import LogInBlock from "@/components/logInBlock/page"
 import { getTranslations } from "next-intl/server"
 
 export default async function Header() {
@@ -19,7 +19,7 @@ export default async function Header() {
               {t("discount")} <span className={st["percent"]}>10%</span>
             </div>
             <div>
-              <LogBlock />
+              <LogInBlock />
             </div>
           </div>
         </div>

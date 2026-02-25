@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { Link } from "@/i18n/navigation"
-import "./styles/globals.scss"
+import "./styles/not-found.scss"
 
 export default function Error() {
   return (

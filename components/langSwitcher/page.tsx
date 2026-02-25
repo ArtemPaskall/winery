@@ -53,47 +53,27 @@
 //   )
 // }
 
-// "use client"
-// import { useRouter, usePathname, useSearchParams } from "next/navigation"
+// ;("use client")
+
+// import { useRouter, usePathname } from "@/i18n/navigation"
 // import { useLocale } from "next-intl"
 // import { routing } from "@/i18n/routing"
 
 // export default function LocaleSwitcher() {
 //   const router = useRouter()
-//   const pathname = usePathname() ?? "/"
-//   const searchParams = useSearchParams()
-//   const search = searchParams ? `?${searchParams.toString()}` : ""
-//   const locale = useLocale() ?? routing.locales[0]
-
-//   const stripLocaleFromPath = (path: string) => {
-//     if (!path || path === "") return "/"
-//     const segs = path.split("/")
-//     // segs[0] === "" because leading slash
-//     if (segs.length > 1 && routing.locales.includes(segs[1] as Locale)) {
-//       const rest = segs.slice(2).join("/") // everything after /<locale>/
-//       return rest ? `/${rest}` : "/"
-//     }
-//     return path.startsWith("/") ? path : `/${path}`
-//   }
+//   const pathname = usePathname() // має бути без /en
+//   const locale = useLocale() // поточна мова
 
 //   const changeLocale = (nextLocale: string) => {
 //     if (nextLocale === locale) return
-//     const noLocale = stripLocaleFromPath(pathname) // '/add-product' або '/'
-//     const href = noLocale === "/" ? `/${nextLocale}${search}` : `/${nextLocale}${noLocale}${search}`
-//     console.log("Locale switch ->", { locale, pathname, noLocale, href })
-//     router.push(href) // full navigation -> next-intl підхопить нові messages
+//     router.replace(pathname, { locale: nextLocale })
 //   }
 
 //   return (
 //     <div>
 //       {routing.locales.map((l) => (
-//         <button
-//           key={l}
-//           onClick={() => changeLocale(l)}
-//           disabled={l === locale}
-//           style={{ marginRight: 8 }}
-//         >
-//           {l}
+//         <button key={l} disabled={l === locale} onClick={() => changeLocale(l)}>
+//           {l.toUpperCase()}
 //         </button>
 //       ))}
 //     </div>
@@ -105,24 +85,63 @@
 import { useRouter, usePathname } from "@/i18n/navigation"
 import { useLocale } from "next-intl"
 import { routing } from "@/i18n/routing"
+import Image from "next/image"
+import st from "./langSwitcher.module.scss"
+import { useState, useEffect, useRef } from "react"
 
-export default function LocaleSwitcher() {
+export default function LangSwitcher() {
   const router = useRouter()
-  const pathname = usePathname() // має бути без /en
+  const pathname = usePathname() // без /en
   const locale = useLocale() // поточна мова
+
+  const [open, setOpen] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
 
   const changeLocale = (nextLocale: string) => {
     if (nextLocale === locale) return
     router.replace(pathname, { locale: nextLocale })
+    setOpen(false)
   }
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        setOpen(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [])
+
   return (
-    <div>
-      {routing.locales.map((l) => (
-        <button key={l} disabled={l === locale} onClick={() => changeLocale(l)}>
-          {l.toUpperCase()}
-        </button>
-      ))}
+    <div
+      ref={ref}
+      className={st["lang-switcher"]}
+      onClick={() => setOpen(!open)}
+    >
+      <Image src={"/globe.svg"} width={20} height={20} alt="Мова" />
+      <div className={`${st["lang-wrapp"]} ${open ? st["open"] : ""}`}>
+        {!open ? (
+          <div>{locale.toUpperCase()}</div>
+        ) : (
+          <>
+            {routing.locales.map((l) => (
+              <div
+                key={l}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  changeLocale(l)
+                }}
+              >
+                {l.toUpperCase()}
+              </div>
+            ))}
+          </>
+        )}
+      </div>
     </div>
   )
 }
