@@ -24,7 +24,7 @@ export default async function WineCard({ wine }: { wine: WineType }) {
         />
         <div className={st["card-tip"]}>{t("quick-view")}</div>
       </div>
-      <div className={st["prod-name"]}>{wine.name[locale]}</div>
+      <div className={st["prod-name"]}>{wine.title[locale]}</div>
       <div className={st["prod-price"]}>{wine.price} грн</div>
       <div className={st["quantity-button"]}>
         <div>-</div>

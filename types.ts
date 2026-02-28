@@ -18,7 +18,7 @@ export type WineCategory =
 
 export type WineType = {
   _id: string
-  name: Multilang
+  title: Multilang
   description: Multilang
   WineCategory: WineCategory
   volume: number

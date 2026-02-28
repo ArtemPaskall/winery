@@ -2,7 +2,7 @@ import { Schema, model, models } from "mongoose"
 
 const WineSchema = new Schema(
   {
-    name: {
+    title: {
       uk: { type: String, required: true },
       en: { type: String, required: true },
       ru: { type: String, required: true },
@@ -17,8 +17,8 @@ const WineSchema = new Schema(
       enum: ["red", "white", "rose", "sparkling", "dessert", "fortified"],
       required: true,
     },
-    volume: { type: String, required: true },
-    price: { type: String, required: true },
+    volume: { type: Number, required: true },
+    price: { type: Number, required: true },
     imageUrl: { type: String, required: false },
   },
   {
