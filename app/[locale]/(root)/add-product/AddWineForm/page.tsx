@@ -95,7 +95,8 @@ export default function AddWineForm() {
   const [message, setMessage] = useState<{
     type: "success" | "error"
     text: string
-  } | null>(null)
+    // } | null>(null)
+  } | null>({ type: "success", text: "Вино додано!" })
 
   const {
     register,
@@ -145,7 +146,7 @@ export default function AddWineForm() {
     if (message) {
       const timer = setTimeout(() => {
         setMessage(null)
-      }, 3000)
+      }, 13000)
 
       return () => clearTimeout(timer)
     }
