@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import st from "./add-product.module.scss"
 import { useTranslations } from "next-intl"
 import { useEffect, useState } from "react"
+import Image from "next/image"
 
 const wineSchema = z.object({
   title: z.object({
@@ -95,8 +96,7 @@ export default function AddWineForm() {
   const [message, setMessage] = useState<{
     type: "success" | "error"
     text: string
-    // } | null>(null)
-  } | null>({ type: "success", text: "Вино додано!" })
+  } | null>(null)
 
   const {
     register,
@@ -261,6 +261,16 @@ export default function AddWineForm() {
               message.type === "success" ? st.success : st.error
             }`}
           >
+            {message.type === "success" && (
+              <Image
+                src={"/add-wine-success.png"}
+                alt="success image"
+                width={200}
+                height={200}
+                className={st["success-img"]}
+              ></Image>
+            )}
+
             {message.text}
           </div>
         )}
