@@ -271,7 +271,6 @@ export default function AddWineForm() {
           </div>
         )}
 
- sdfsfd
         <button type="submit" disabled={loading}>
           {loading ? <span className={st.spinner}></span> : t("submit")}
         </button>
