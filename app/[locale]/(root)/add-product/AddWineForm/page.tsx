@@ -251,10 +251,6 @@ export default function AddWineForm() {
         </div>
         <input {...register("imageUrl")} placeholder={t("url-img")} />
 
-        <button type="submit" disabled={loading}>
-          {loading ? <span className={st.spinner}></span> : t("submit")}
-        </button>
-
         {message && (
           <div
             className={`${st.message} ${
@@ -274,6 +270,10 @@ export default function AddWineForm() {
             {message.text}
           </div>
         )}
+
+        <button type="submit" disabled={loading}>
+          {loading ? <span className={st.spinner}></span> : t("submit")}
+        </button>
       </form>
     </div>
   )
