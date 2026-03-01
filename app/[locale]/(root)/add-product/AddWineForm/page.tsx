@@ -146,7 +146,7 @@ export default function AddWineForm() {
     if (message) {
       const timer = setTimeout(() => {
         setMessage(null)
-      }, 13000)
+      }, 5000)
 
       return () => clearTimeout(timer)
     }
