@@ -63,3 +63,30 @@
 .form-label {
   margin-top: 20px;
 }
+
+.message {
+  color: red;
+  text-align: center;
+  padding-top: 15px;
+  font-size: 18px;
+}
+
+.spinner {
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-top: 3px solid #ffffff; // або твій колір
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

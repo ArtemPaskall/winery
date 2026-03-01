@@ -5,6 +5,7 @@ import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import st from "./add-product.module.scss"
 import { useTranslations } from "next-intl"
+import { useEffect, useState } from "react"
 
 export const wineSchema = z.object({
   title: z.object({
@@ -90,6 +91,12 @@ const initialFormData: Partial<WineFormData> = {
 
 export default function AddWineForm() {
   const t = useTranslations("AddWine")
+  const [loading, setLoading] = useState(false)
+  const [message, setMessage] = useState<{
+    type: "success" | "error"
+    text: string
+  } | null>(null)
+  // } | null>({ type: "success", text: "asdfafs" })
 
   const {
     register,
@@ -102,6 +109,8 @@ export default function AddWineForm() {
   })
 
   const onSubmit = async (data: WineFormData) => {
+    setLoading(true)
+
     try {
       const payload = {
         ...data,
@@ -116,21 +125,37 @@ export default function AddWineForm() {
       })
 
       if (response.ok) {
-        alert("Вино додано!")
+        setMessage({ type: "success", text: "Вино додано!" })
         reset()
       } else {
         const errorData = await response.json().catch(() => null)
-        alert(`Помилка: ${errorData?.message || response.statusText}`)
+        setMessage({
+          type: "error",
+          text: `Помилка: ${errorData?.message || response.statusText}`,
+        })
       }
     } catch (err) {
       console.error("Network error:", err)
       alert("Помилка мережі. Спробуйте пізніше.")
+    } finally {
+      setLoading(false)
     }
   }
+
+  useEffect(() => {
+    if (message) {
+      const timer = setTimeout(() => {
+        setMessage(null)
+      }, 3000)
+
+      return () => clearTimeout(timer)
+    }
+  }, [message])
 
   return (
     <div className={st["form-wrapper"]}>
       <h2 className={st["form-header-1"]}>{t("title")}</h2>
+
       <form onSubmit={handleSubmit(onSubmit)} className={st["wine-form"]}>
         <h3 className={st["form-label"]}>{t("name")}</h3>
 
@@ -226,7 +251,19 @@ export default function AddWineForm() {
         </div>
         <input {...register("imageUrl")} placeholder={t("url-img")} />
 
-        <button type="submit">{t("submit")}</button>
+        <button type="submit" disabled={loading}>
+          {loading ? <span className={st.spinner}></span> : t("submit")}
+        </button>
+
+        {message && (
+          <div
+            className={`${st.message} ${
+              message.type === "success" ? st.success : st.error
+            }`}
+          >
+            {message.text}
+          </div>
+        )}
       </form>
     </div>
   )
