@@ -26,6 +26,16 @@
     "submit": "Додати",
     "price": "Ціна",
     "url-img": "URL зображення",
-    "volume": "Обʼєм (мл)"
+    "volume": "Обʼєм (мл)",
+    "min_3_characters": "Мінімум 3 символи",
+    "max_100_characters": "Максимум 100 символів",
+    "min_5_characters": "Мінімум 5 символів",
+    "max_2000_characters": "Занадто довгий опис",
+    "required": "Поле обов'язкове",
+    "must_be_number": "Має бути число",
+    "greater_than_0": "Має бути більше 0",
+    "required_category": "Оберіть категорію",
+    "invalid_category": "Некоректна категорія",
+    "invalid_url": "Некоректний URL"
   }
 }
