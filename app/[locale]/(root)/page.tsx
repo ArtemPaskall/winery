@@ -5,6 +5,7 @@ import dbConnect from "@/lib/mongoDB"
 import Wine from "@/models/wine"
 import { WineType } from "@/types"
 import WineCard from "@/components/card/page"
+import Image from "next/image"
 
 export const dynamic = "force-dynamic"
 
@@ -24,9 +25,21 @@ export default async function Home() {
   return (
     <main className="wrapp-1200">
       <h1>{t("title")}</h1>
-      <Link href="/add-product">{t("add-product")}</Link>
       <div className={st["main-content"]}>
-        <div className={st["left-menu"]}>left-menu</div>
+        <div className={st["left-menu"]}>
+          <Link href="/add-product" className={st["add-product-button"]}>
+            <Image
+              src={"/add-plus.png"}
+              width={20}
+              height={20}
+              alt={"add wine"}
+            ></Image>
+            {t("add-product")}
+          </Link>
+          <div>left-menu 1</div>
+          <div>left-menu 2</div>
+          <div>left-menu 3</div>
+        </div>
         <div className={st["card-block"]}>
           {wines.map((wine) => (
             <WineCard key={wine._id.toString()} wine={wine} />
