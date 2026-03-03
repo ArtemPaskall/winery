@@ -36,6 +36,8 @@
     "greater_than_0": "Must be greater than 0",
     "required_category": "Select a category",
     "invalid_category": "Invalid category",
-    "invalid_url": "Invalid URL"
+    "invalid_url": "Invalid URL",
+    "uploadPhoto": "Upload photo",
+    "addWineSuccess": "Wine added"
   }
 }

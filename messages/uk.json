@@ -36,6 +36,8 @@
     "greater_than_0": "Має бути більше 0",
     "required_category": "Оберіть категорію",
     "invalid_category": "Некоректна категорія",
-    "invalid_url": "Некоректний URL"
+    "invalid_url": "Некоректний URL",
+    "uploadPhoto": "Завантажити фото",
+    "addWineSuccess": "Вино додано"
   }
 }

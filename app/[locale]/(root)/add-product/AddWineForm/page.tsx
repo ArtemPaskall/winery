@@ -5,7 +5,7 @@ import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import st from "./add-product.module.scss"
 import { useTranslations } from "next-intl"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 
 export default function AddWineForm() {
@@ -15,6 +15,45 @@ export default function AddWineForm() {
     type: "success" | "error"
     text: string
   } | null>(null)
+
+  const [imageSrc, setImageSrc] = useState<string | null>(null)
+  const [file, setFile] = useState<File | null>(null)
+  const fileInputRef = useRef<HTMLInputElement | null>(null)
+
+  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const selectedFile = e.target.files?.[0]
+    if (!selectedFile) return
+
+    setFile(selectedFile)
+
+    const reader = new FileReader()
+    reader.onloadend = () => {
+      setImageSrc(reader.result as string)
+    }
+    reader.readAsDataURL(selectedFile)
+  }
+
+  async function uploadToCloudinary(file: File): Promise<string> {
+    const formData = new FormData()
+    formData.append("file", file)
+
+    const response = await fetch("/api/uploadFile", {
+      method: "POST",
+      body: formData,
+    })
+
+    const data = await response.json()
+    return data.url
+  }
+
+  function closeImagePreload() {
+    setImageSrc(null)
+    setFile(null)
+
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ""
+    }
+  }
 
   const wineSchema = z.object({
     title: z.object({
@@ -70,12 +109,7 @@ export default function AddWineForm() {
       .min(1, { message: t("required") })
       .refine((val) => !isNaN(Number(val)), { message: t("must_be_number") })
       .refine((val) => Number(val) > 0, { message: t("greater_than_0") }),
-    imageUrl: z
-      .string()
-      .trim()
-      .url(t("invalid_url"))
-      .optional()
-      .or(z.literal("")),
+    imageUrl: z.string().optional(),
   })
 
   type WineFormData = z.infer<typeof wineSchema>
@@ -101,10 +135,17 @@ export default function AddWineForm() {
     setLoading(true)
 
     try {
+      let imageUrl = ""
+
+      if (file) {
+        imageUrl = await uploadToCloudinary(file)
+      }
+
       const payload = {
         ...data,
         volume: Number(data.volume),
         price: Number(data.price),
+        ...(imageUrl && { imageUrl }),
       }
 
       const response = await fetch("/api/wines", {
@@ -114,8 +155,10 @@ export default function AddWineForm() {
       })
 
       if (response.ok) {
-        setMessage({ type: "success", text: "Вино додано!" })
+        setMessage({ type: "success", text: t("addWineSuccess") })
         reset()
+        setImageSrc(null)
+        setFile(null)
       } else {
         const errorData = await response.json().catch(() => null)
         setMessage({
@@ -147,29 +190,24 @@ export default function AddWineForm() {
 
       <form onSubmit={handleSubmit(onSubmit)} className={st["wine-form"]}>
         <h3 className={st["form-label"]}>{t("name")}</h3>
-
         <div className={st["error-wrapp"]}>
           {errors.title?.uk && (
             <p className={st["error"]}>{errors.title.uk.message}</p>
           )}
         </div>
         <input {...register("title.uk")} placeholder="Назва українською" />
-
         <div className={st["error-wrapp"]}>
           {errors.title?.en && (
             <p className={st["error"]}>{errors.title.en.message}</p>
           )}
         </div>
         <input {...register("title.en")} placeholder="Name in English" />
-
         <div className={st["error-wrapp"]}>
           {errors.title?.ru && (
             <p className={st["error"]}>{errors.title.ru.message}</p>
           )}
         </div>
-
         <input {...register("title.ru")} placeholder="Название на русском" />
-
         <h3 className={st["form-label"]}>{t("description")}</h3>
         <div className={st["error-wrapp"]}>
           {errors.description?.uk && (
@@ -180,7 +218,6 @@ export default function AddWineForm() {
           {...register("description.uk")}
           placeholder="Опис українською"
         />
-
         <div className={st["error-wrapp"]}>
           {errors.description?.en && (
             <p className={st["error"]}>{errors.description.en.message}</p>
@@ -190,7 +227,6 @@ export default function AddWineForm() {
           {...register("description.en")}
           placeholder="Description in English"
         />
-
         <div className={st["error-wrapp"]}>
           {errors.description?.ru && (
             <p className={st["error"]}>{errors.description.ru.message}</p>
@@ -200,7 +236,6 @@ export default function AddWineForm() {
           {...register("description.ru")}
           placeholder="Описание на русском"
         />
-
         <div className={st["error-wrapp"]}>
           {errors.WineCategory && (
             <p className={st["error"]}>{errors.WineCategory.message}</p>
@@ -214,7 +249,6 @@ export default function AddWineForm() {
           <option value="dessert">{t("WineCategory.dessert")}</option>
           <option value="fortified">{t("WineCategory.fortified")}</option>
         </select>
-
         <div className={st["error-wrapp"]}>
           {errors.volume && (
             <p className={st["error"]}>{errors.volume.message}</p>
@@ -225,25 +259,53 @@ export default function AddWineForm() {
           {...register("volume")}
           placeholder={t("volume")}
         />
-
         <div className={st["error-wrapp"]}>
           {errors.price && (
             <p className={st["error"]}>{errors.price.message}</p>
           )}
         </div>
         <input type="number" {...register("price")} placeholder={t("price")} />
-
         <div className={st["error-wrapp"]}>
           {errors.imageUrl && (
             <p className={st["error"]}>{errors.imageUrl.message}</p>
           )}
         </div>
-        <input {...register("imageUrl")} placeholder={t("url-img")} />
+
+        <label className={st.uploadButton}>
+          {t("uploadPhoto")}
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            className={st.hiddenInput}
+          />
+        </label>
+
+        {imageSrc && (
+          <div className={st["image-preload-wrapp"]}>
+            <Image
+              src={imageSrc}
+              alt="preview"
+              width={200}
+              height={200}
+              className={st["image-preload"]}
+            />
+            <Image
+              src={"/red-circle-cross-close.png"}
+              alt="preview"
+              width={20}
+              height={20}
+              onClick={closeImagePreload}
+              className={st["image-preload-close"]}
+            />
+          </div>
+        )}
 
         {message && (
           <div
             className={`${st.message} ${
-              message.type === "success" ? st.success : st.error
+              message.type === "success" ? st.success : st.errorMessage
             }`}
           >
             {message.type === "success" && (
@@ -259,7 +321,6 @@ export default function AddWineForm() {
             {message.text}
           </div>
         )}
-
         <button type="submit" disabled={loading}>
           {loading ? <span className={st.spinner}></span> : t("submit")}
         </button>

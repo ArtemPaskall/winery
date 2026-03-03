@@ -36,6 +36,8 @@
     "greater_than_0": "Должно быть больше 0",
     "required_category": "Выберите категорию",
     "invalid_category": "Некорректная категория",
-    "invalid_url": "Некорректный URL"
+    "invalid_url": "Некорректный URL",
+    "uploadPhoto": "Загрузить фото",
+    "addWineSuccess": "Вино добавлено"
   }
 }
