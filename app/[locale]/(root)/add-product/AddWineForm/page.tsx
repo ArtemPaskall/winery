@@ -7,6 +7,7 @@ import st from "./add-product.module.scss"
 import { useTranslations } from "next-intl"
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
+import Breadcrumbs from "@/components/Breadcrumbs/page"
 
 export default function AddWineForm() {
   const t = useTranslations("AddWine")
@@ -185,146 +186,153 @@ export default function AddWineForm() {
   }, [message])
 
   return (
-    <div className={st["form-wrapper"]}>
-      <h2 className={st["form-header-1"]}>{t("title")}</h2>
+    <div className={"wrapp-1200"}>
+      <Breadcrumbs></Breadcrumbs>
+      <div className={st["form-wrapper"]}>
+        <h2 className={st["form-header-1"]}>{t("title")}</h2>
 
-      <form onSubmit={handleSubmit(onSubmit)} className={st["wine-form"]}>
-        <h3 className={st["form-label"]}>{t("name")}</h3>
-        <div className={st["error-wrapp"]}>
-          {errors.title?.uk && (
-            <p className={st["error"]}>{errors.title.uk.message}</p>
-          )}
-        </div>
-        <input {...register("title.uk")} placeholder="Назва українською" />
-        <div className={st["error-wrapp"]}>
-          {errors.title?.en && (
-            <p className={st["error"]}>{errors.title.en.message}</p>
-          )}
-        </div>
-        <input {...register("title.en")} placeholder="Name in English" />
-        <div className={st["error-wrapp"]}>
-          {errors.title?.ru && (
-            <p className={st["error"]}>{errors.title.ru.message}</p>
-          )}
-        </div>
-        <input {...register("title.ru")} placeholder="Название на русском" />
-        <h3 className={st["form-label"]}>{t("description")}</h3>
-        <div className={st["error-wrapp"]}>
-          {errors.description?.uk && (
-            <p className={st["error"]}>{errors.description.uk.message}</p>
-          )}
-        </div>
-        <textarea
-          {...register("description.uk")}
-          placeholder="Опис українською"
-        />
-        <div className={st["error-wrapp"]}>
-          {errors.description?.en && (
-            <p className={st["error"]}>{errors.description.en.message}</p>
-          )}
-        </div>
-        <textarea
-          {...register("description.en")}
-          placeholder="Description in English"
-        />
-        <div className={st["error-wrapp"]}>
-          {errors.description?.ru && (
-            <p className={st["error"]}>{errors.description.ru.message}</p>
-          )}
-        </div>
-        <textarea
-          {...register("description.ru")}
-          placeholder="Описание на русском"
-        />
-        <div className={st["error-wrapp"]}>
-          {errors.WineCategory && (
-            <p className={st["error"]}>{errors.WineCategory.message}</p>
-          )}
-        </div>
-        <select {...register("WineCategory")}>
-          <option value="red">{t("WineCategory.red")}</option>
-          <option value="white">{t("WineCategory.white")}</option>
-          <option value="rose">{t("WineCategory.rose")}</option>
-          <option value="sparkling">{t("WineCategory.sparkling")}</option>
-          <option value="dessert">{t("WineCategory.dessert")}</option>
-          <option value="fortified">{t("WineCategory.fortified")}</option>
-        </select>
-        <div className={st["error-wrapp"]}>
-          {errors.volume && (
-            <p className={st["error"]}>{errors.volume.message}</p>
-          )}
-        </div>
-        <input
-          type="number"
-          {...register("volume")}
-          placeholder={t("volume")}
-        />
-        <div className={st["error-wrapp"]}>
-          {errors.price && (
-            <p className={st["error"]}>{errors.price.message}</p>
-          )}
-        </div>
-        <input type="number" {...register("price")} placeholder={t("price")} />
-        <div className={st["error-wrapp"]}>
-          {errors.imageUrl && (
-            <p className={st["error"]}>{errors.imageUrl.message}</p>
-          )}
-        </div>
-
-        <label className={st.uploadButton}>
-          {t("uploadPhoto")}
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept="image/*"
-            onChange={handleFileChange}
-            className={st.hiddenInput}
-          />
-        </label>
-
-        {imageSrc && (
-          <div className={st["image-preload-wrapp"]}>
-            <Image
-              src={imageSrc}
-              alt="preview"
-              width={200}
-              height={200}
-              className={st["image-preload"]}
-            />
-            <Image
-              src={"/red-circle-cross-close.png"}
-              alt="preview"
-              width={20}
-              height={20}
-              onClick={closeImagePreload}
-              className={st["image-preload-close"]}
-            />
+        <form onSubmit={handleSubmit(onSubmit)} className={st["wine-form"]}>
+          <h3 className={st["form-label"]}>{t("name")}</h3>
+          <div className={st["error-wrapp"]}>
+            {errors.title?.uk && (
+              <p className={st["error"]}>{errors.title.uk.message}</p>
+            )}
           </div>
-        )}
+          <input {...register("title.uk")} placeholder="Назва українською" />
+          <div className={st["error-wrapp"]}>
+            {errors.title?.en && (
+              <p className={st["error"]}>{errors.title.en.message}</p>
+            )}
+          </div>
+          <input {...register("title.en")} placeholder="Name in English" />
+          <div className={st["error-wrapp"]}>
+            {errors.title?.ru && (
+              <p className={st["error"]}>{errors.title.ru.message}</p>
+            )}
+          </div>
+          <input {...register("title.ru")} placeholder="Название на русском" />
+          <h3 className={st["form-label"]}>{t("description")}</h3>
+          <div className={st["error-wrapp"]}>
+            {errors.description?.uk && (
+              <p className={st["error"]}>{errors.description.uk.message}</p>
+            )}
+          </div>
+          <textarea
+            {...register("description.uk")}
+            placeholder="Опис українською"
+          />
+          <div className={st["error-wrapp"]}>
+            {errors.description?.en && (
+              <p className={st["error"]}>{errors.description.en.message}</p>
+            )}
+          </div>
+          <textarea
+            {...register("description.en")}
+            placeholder="Description in English"
+          />
+          <div className={st["error-wrapp"]}>
+            {errors.description?.ru && (
+              <p className={st["error"]}>{errors.description.ru.message}</p>
+            )}
+          </div>
+          <textarea
+            {...register("description.ru")}
+            placeholder="Описание на русском"
+          />
+          <div className={st["error-wrapp"]}>
+            {errors.WineCategory && (
+              <p className={st["error"]}>{errors.WineCategory.message}</p>
+            )}
+          </div>
+          <select {...register("WineCategory")}>
+            <option value="red">{t("WineCategory.red")}</option>
+            <option value="white">{t("WineCategory.white")}</option>
+            <option value="rose">{t("WineCategory.rose")}</option>
+            <option value="sparkling">{t("WineCategory.sparkling")}</option>
+            <option value="dessert">{t("WineCategory.dessert")}</option>
+            <option value="fortified">{t("WineCategory.fortified")}</option>
+          </select>
+          <div className={st["error-wrapp"]}>
+            {errors.volume && (
+              <p className={st["error"]}>{errors.volume.message}</p>
+            )}
+          </div>
+          <input
+            type="number"
+            {...register("volume")}
+            placeholder={t("volume")}
+          />
+          <div className={st["error-wrapp"]}>
+            {errors.price && (
+              <p className={st["error"]}>{errors.price.message}</p>
+            )}
+          </div>
+          <input
+            type="number"
+            {...register("price")}
+            placeholder={t("price")}
+          />
+          <div className={st["error-wrapp"]}>
+            {errors.imageUrl && (
+              <p className={st["error"]}>{errors.imageUrl.message}</p>
+            )}
+          </div>
 
-        {message && (
-          <div
-            className={`${st.message} ${
-              message.type === "success" ? st.success : st.errorMessage
-            }`}
-          >
-            {message.type === "success" && (
+          <label className={st.uploadButton}>
+            {t("uploadPhoto")}
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              className={st.hiddenInput}
+            />
+          </label>
+
+          {imageSrc && (
+            <div className={st["image-preload-wrapp"]}>
               <Image
-                src={"/add-wine-success.png"}
-                alt="success image"
+                src={imageSrc}
+                alt="preview"
                 width={200}
                 height={200}
-                className={st["success-img"]}
-              ></Image>
-            )}
+                className={st["image-preload"]}
+              />
+              <Image
+                src={"/red-circle-cross-close.png"}
+                alt="preview"
+                width={20}
+                height={20}
+                onClick={closeImagePreload}
+                className={st["image-preload-close"]}
+              />
+            </div>
+          )}
 
-            {message.text}
-          </div>
-        )}
-        <button type="submit" disabled={loading}>
-          {loading ? <span className={st.spinner}></span> : t("submit")}
-        </button>
-      </form>
+          {message && (
+            <div
+              className={`${st.message} ${
+                message.type === "success" ? st.success : st.errorMessage
+              }`}
+            >
+              {message.type === "success" && (
+                <Image
+                  src={"/add-wine-success.png"}
+                  alt="success image"
+                  width={200}
+                  height={200}
+                  className={st["success-img"]}
+                ></Image>
+              )}
+
+              {message.text}
+            </div>
+          )}
+          <button type="submit" disabled={loading}>
+            {loading ? <span className={st.spinner}></span> : t("submit")}
+          </button>
+        </form>
+      </div>
     </div>
   )
 }

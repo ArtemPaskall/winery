@@ -39,5 +39,9 @@
     "invalid_url": "Некорректный URL",
     "uploadPhoto": "Загрузить фото",
     "addWineSuccess": "Вино добавлено"
+  },
+  "Breadcrumbs": {
+    "Home": "Главная",
+    "addProduct": "Добавить вино"
   }
 }

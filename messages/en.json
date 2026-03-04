@@ -39,5 +39,9 @@
     "invalid_url": "Invalid URL",
     "uploadPhoto": "Upload photo",
     "addWineSuccess": "Wine added"
+  },
+  "Breadcrumbs": {
+    "Home": "Home",
+    "addProduct": "Add wine"
   }
 }

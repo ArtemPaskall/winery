@@ -1,0 +1,18 @@
+.nav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+  font-weight: 300;
+}
+.nav-span {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+.nav a,
+.nav-link {
+  color: #000;
+}

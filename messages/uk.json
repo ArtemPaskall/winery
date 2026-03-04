@@ -39,5 +39,9 @@
     "invalid_url": "Некоректний URL",
     "uploadPhoto": "Завантажити фото",
     "addWineSuccess": "Вино додано"
+  },
+  "Breadcrumbs": {
+    "Home": "Головна",
+    "addProduct": "Додати вино"
   }
 }

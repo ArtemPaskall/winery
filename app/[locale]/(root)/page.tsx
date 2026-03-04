@@ -6,6 +6,7 @@ import Wine from "@/models/wine"
 import { WineType } from "@/types"
 import WineCard from "@/components/card/page"
 import Image from "next/image"
+import Breadcrumbs from "@/components/Breadcrumbs/page"
 
 export const dynamic = "force-dynamic"
 
@@ -24,7 +25,7 @@ export default async function Home() {
 
   return (
     <main className="wrapp-1200">
-      <h1>{t("title")}</h1>
+      <Breadcrumbs></Breadcrumbs>
       <div className={st["main-content"]}>
         <div className={st["left-menu"]}>
           <Link href="/add-product" className={st["add-product-button"]}>
