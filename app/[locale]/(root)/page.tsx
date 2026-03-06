@@ -4,7 +4,7 @@ import st from "./page.module.scss"
 import dbConnect from "@/lib/mongoDB"
 import Wine from "@/models/wine"
 import { WineType } from "@/types"
-import WineCard from "@/components/card/page"
+import WineCard from "@/components/Card/page"
 import Image from "next/image"
 import Breadcrumbs from "@/components/Breadcrumbs/page"
 
