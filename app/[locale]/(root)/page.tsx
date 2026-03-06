@@ -4,7 +4,8 @@ import st from "./page.module.scss"
 import dbConnect from "@/lib/mongoDB"
 import Wine from "@/models/wine"
 import { WineType } from "@/types"
-import WineCard from "@/components/card/page"
+import WineCard from "@/components/Card/page"
+import Footer from "@/components/Footer/page"
 
 export const dynamic = "force-dynamic"
 
@@ -22,17 +23,20 @@ export default async function Home() {
   const wines = await Wine.find({}).lean<WineType[]>()
 
   return (
-    <main className="wrapp-1200">
-      <h1>{t("title")}</h1>
-      <Link href="/add-product">{t("add-product")}</Link>
-      <div className={st["main-content"]}>
-        <div className={st["left-menu"]}>left-menu</div>
-        <div className={st["card-block"]}>
-          {wines.map((wine) => (
-            <WineCard key={wine._id.toString()} wine={wine} />
-          ))}
+    <>
+      <main className="wrapp-1200">
+        <h1>{t("title")}</h1>
+        <Link href="/add-product">{t("add-product")}</Link>
+        <div className={st["main-content"]}>
+          <div className={st["left-menu"]}>left-menu</div>
+          <div className={st["card-block"]}>
+            {wines.map((wine) => (
+              <WineCard key={wine._id.toString()} wine={wine} />
+            ))}
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+      <Footer />
+    </>
   )
 }

@@ -1,10 +1,9 @@
 import st from "./header.module.scss"
-// import "@/app/styles/globals.scss"
 import React from "react"
 import { Link } from "@/i18n/navigation"
 import Image from "next/image"
-import LangSwitcher from "../langSwitcher/page"
-import LogInBlock from "@/components/logInBlock/page"
+import LangSwitcher from "../LangSwitcher/page"
+import LogInBlock from "@/components/LogInBlock/page"
 import { getTranslations } from "next-intl/server"
 
 export default async function Header() {
