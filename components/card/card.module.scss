@@ -14,7 +14,8 @@
 }
 .card-img {
   width: 220px;
-  height: auto;
+  height: 350px;
+  object-fit: cover;
 }
 .card-tip {
   display: flex;

@@ -16,7 +16,11 @@ export default async function WineCard({ wine }: { wine: WineType }) {
     <div className={st["product-item"]}>
       <div className={st["product-img-wrapp"]}>
         <Image
-          src="/bottle-1.png"
+          src={
+            wine.imageUrl && wine.imageUrl.length > 0
+              ? wine.imageUrl
+              : "/bottle-1.png"
+          }
           alt="wine bottle"
           width={100}
           height={70}
@@ -24,7 +28,7 @@ export default async function WineCard({ wine }: { wine: WineType }) {
         />
         <div className={st["card-tip"]}>{t("quick-view")}</div>
       </div>
-      <div className={st["prod-name"]}>{wine.name[locale]}</div>
+      <div className={st["prod-name"]}>{wine.title[locale]}</div>
       <div className={st["prod-price"]}>{wine.price} грн</div>
       <div className={st["quantity-button"]}>
         <div>-</div>

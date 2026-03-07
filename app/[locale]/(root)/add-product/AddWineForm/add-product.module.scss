@@ -63,3 +63,94 @@
 .form-label {
   margin-top: 20px;
 }
+
+.message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+  text-align: center;
+  padding-top: 15px;
+
+  border: 1px solid rgb(101, 101, 101);
+  border-radius: 10px;
+  padding: 15px;
+  margin: 15px auto 0;
+  max-width: 200px;
+}
+.success {
+  font-size: 18px;
+  color: rgb(43, 155, 23);
+  font-weight: 700;
+}
+.errorMessage {
+  font-size: 15px;
+  color: red;
+  color: rgb(44, 2, 230);
+}
+.success-img {
+  width: 35px;
+  height: 35px;
+}
+
+.spinner {
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-top: 3px solid #ffffff; // або твій колір
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.uploadButton {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+  background-color: #ecebeb;
+  border: 1px solid rgb(86, 86, 86);
+  border-radius: 5px;
+  font-size: 15px;
+  width: fit-content;
+  height: 35px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.hiddenInput {
+  display: none;
+}
+.image-preload-wrapp {
+  position: relative;
+  width: fit-content;
+}
+.image-preload {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  border: 1px solid rgb(132, 132, 132);
+  margin-top: 10px;
+  object-fit: cover;
+}
+
+.image-preload-close {
+  width: 13px;
+  height: 13px;
+  position: absolute;
+  top: 4px;
+  right: -5px;
+  cursor: pointer;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

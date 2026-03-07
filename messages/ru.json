@@ -26,6 +26,22 @@
     "submit": "Добавить",
     "price": "Цена",
     "url-img": "URL изображения",
-    "volume": "Объём (мл)"
+    "volume": "Объём (мл)",
+    "min_3_characters": "Минимум 3 символа",
+    "max_100_characters": "Максимум 100 символов",
+    "min_5_characters": "Минимум 5 символов",
+    "max_2000_characters": "Слишком длинное описание",
+    "required": "Поле обязательно",
+    "must_be_number": "Должно быть числом",
+    "greater_than_0": "Должно быть больше 0",
+    "required_category": "Выберите категорию",
+    "invalid_category": "Некорректная категория",
+    "invalid_url": "Некорректный URL",
+    "uploadPhoto": "Загрузить фото",
+    "addWineSuccess": "Вино добавлено"
+  },
+  "Breadcrumbs": {
+    "Home": "Главная",
+    "addProduct": "Добавить вино"
   }
 }

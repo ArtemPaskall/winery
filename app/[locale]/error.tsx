@@ -14,7 +14,7 @@ export default function Error({ error, reset }: ErrorPageProps) {
 
   return (
     <div>
-      <h1>Щось пішло не так</h1>
+      <h1>Щось пішло не так </h1>
       <h3>{error.message}</h3>
       <button onClick={reset}>Спробувати ще раз</button>
     </div>
