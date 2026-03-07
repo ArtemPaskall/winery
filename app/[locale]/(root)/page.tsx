@@ -25,7 +25,7 @@ export default async function Home() {
 
   return (
     <main className="wrapp-1200">
-      <Breadcrumbs></Breadcrumbs>
+      <Breadcrumbs />
       <div className={st["main-content"]}>
         <div className={st["left-menu"]}>
           <Link href="/add-product" className={st["add-product-button"]}>
@@ -37,15 +37,19 @@ export default async function Home() {
             ></Image>
             {t("add-product")}
           </Link>
-          <div>left-menu 1</div>
-          <div>left-menu 2</div>
-          <div>left-menu 3</div>
+          <div>категорій</div>
         </div>
-        <div className={st["card-block"]}>
-          {wines.map((wine) => (
-            <WineCard key={wine._id.toString()} wine={wine} />
-          ))}
-        </div>
+        <>
+          {wines.length > 0 ? (
+            <div className={st["card-block"]}>
+              {wines.map((wine) => (
+                <WineCard key={wine._id.toString()} wine={wine} />
+              ))}
+            </div>
+          ) : (
+            <div>sdfsdfsd</div>
+          )}
+        </>
       </div>
     </main>
   )
