@@ -4,7 +4,8 @@ import st from "./page.module.scss"
 import dbConnect from "@/lib/mongoDB"
 import Wine from "@/models/wine"
 import { WineType } from "@/types"
-import WineCard from "@/components/card/page"
+import WineCard from "@/components/Card/page"
+import Footer from "@/components/Footer/page"
 import Image from "next/image"
 import Breadcrumbs from "@/components/Breadcrumbs/page"
 
@@ -24,33 +25,38 @@ export default async function Home() {
   const wines = await Wine.find({}).lean<WineType[]>()
 
   return (
-    <main className="wrapp-1200">
-      <Breadcrumbs />
-      <div className={st["main-content"]}>
-        <div className={st["left-menu"]}>
-          <Link href="/add-product" className={st["add-product-button"]}>
-            <Image
-              src={"/add-plus.png"}
-              width={20}
-              height={20}
-              alt={"add wine"}
-            ></Image>
-            {t("add-product")}
-          </Link>
-          <div>категорій</div>
+    <>
+      <main className="wrapp-1200">
+        <Breadcrumbs></Breadcrumbs>
+        <div className={st["main-content"]}>
+          <div className={st["left-menu"]}>
+            <Link href="/add-product" className={st["add-product-button"]}>
+              <Image
+                src={"/add-plus.png"}
+                width={20}
+                height={20}
+                alt={"add wine"}
+              ></Image>
+              {t("add-product")}
+            </Link>
+            <div>left-menu 1</div>
+            <div>left-menu 2</div>
+            <div>left-menu 3</div>
+          </div>
+          <>
+            {wines.length > 0 ? (
+              <div className={st["card-block"]}>
+                {wines.map((wine) => (
+                  <WineCard key={wine._id.toString()} wine={wine} />
+                ))}
+              </div>
+            ) : (
+              <div>sdfsdfsd</div>
+            )}
+          </>
         </div>
-        <>
-          {wines.length > 0 ? (
-            <div className={st["card-block"]}>
-              {wines.map((wine) => (
-                <WineCard key={wine._id.toString()} wine={wine} />
-              ))}
-            </div>
-          ) : (
-            <div>sdfsdfsd</div>
-          )}
-        </>
-      </div>
-    </main>
+      </main>
+      <Footer />
+    </>
   )
 }
