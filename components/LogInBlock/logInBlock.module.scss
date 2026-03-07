@@ -1,0 +1,31 @@
+.enter-text {
+  text-decoration: none;
+  font-size: 14px;
+  color: #fff;
+  transition: all 0.3s;
+  display: block;
+}
+
+.enter-text:hover {
+  transform: scale(1.1);
+}
+
+.avatar-wrapp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  text-decoration: none;
+}
+
+.user-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-name {
+  font-size: 12px;
+  color: #fff;
+}
