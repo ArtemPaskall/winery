@@ -4,7 +4,7 @@
   align-items: flex-start;
   column-gap: 30px;
   padding-bottom: 30px;
-  margin-top: 50px;
+  margin-top: 70px;
 }
 
 .add-product-button {
@@ -35,4 +35,17 @@
   gap: 40px;
   width: 100%;
   box-sizing: border-box;
+}
+.no-wine {
+  text-align: center;
+  width: 100%;
+  font-size: 22px;
+  font-weight: 300;
+}
+.header-1 {
+  text-align: center;
+  font-size: 80px;
+  font-weight: 500;
+  color: #8454fc;
+  margin-top: 50px;
 }

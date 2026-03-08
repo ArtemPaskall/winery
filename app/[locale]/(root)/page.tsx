@@ -5,7 +5,6 @@ import dbConnect from "@/lib/mongoDB"
 import Wine from "@/models/wine"
 import { WineType } from "@/types"
 import WineCard from "@/components/Card/page"
-import Footer from "@/components/Footer/page"
 import Image from "next/image"
 import Breadcrumbs from "@/components/Breadcrumbs/page"
 
@@ -28,6 +27,7 @@ export default async function Home() {
     <>
       <main className="wrapp-1200">
         <Breadcrumbs></Breadcrumbs>
+        <div className={st["header-1"]}>All Products</div>
         <div className={st["main-content"]}>
           <div className={st["left-menu"]}>
             <Link href="/add-product" className={st["add-product-button"]}>
@@ -51,12 +51,11 @@ export default async function Home() {
                 ))}
               </div>
             ) : (
-              <div>sdfsdfsd</div>
+              <div className={st["no-wine"]}> {t("no-wine")}</div>
             )}
           </>
         </div>
       </main>
-      <Footer />
     </>
   )
 }

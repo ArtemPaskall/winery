@@ -8,6 +8,7 @@ import { getTranslations } from "next-intl/server"
 
 export default async function Header() {
   const t = await getTranslations("Header")
+
   return (
     <header className={st["header"]}>
       <div className={st["header-top"]}>

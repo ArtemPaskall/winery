@@ -1,7 +1,8 @@
 {
   "HomePage": {
     "title": "Home",
-    "add-product": "Add Wine"
+    "add-product": "Add Wine",
+    "no-wine": "No wines have been added yet"
   },
   "Header": {
     "discount": "Get a discount",
@@ -12,6 +13,7 @@
     "quick-view": "Quick View"
   },
   "AddWine": {
+    "pageTitle": "Add Wine",
     "title": "Add New Wine",
     "name": "Name",
     "description": "Description",

@@ -1,7 +1,8 @@
 {
   "HomePage": {
     "title": "Головна",
-    "add-product": "Додати вино"
+    "add-product": "Додати вино",
+    "no-wine": " Поки що жодного вина не додано"
   },
   "Header": {
     "discount": "Отримай знижку",
@@ -12,6 +13,7 @@
     "quick-view": "Переглянути"
   },
   "AddWine": {
+    "pageTitle": "Додати вино",
     "title": "Додати нове вино",
     "name": "Назва",
     "description": "Опис",

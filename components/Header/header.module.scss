@@ -75,14 +75,14 @@
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url('/header-img.jpg');
+    background-image: url("/header-img.jpg");
     background-size: cover;
     background-position: center;
     filter: brightness(0.2);
     z-index: 0;
   }
 
-  >* {
+  > * {
     position: relative;
     z-index: 1;
   }
