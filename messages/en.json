@@ -45,5 +45,21 @@
   "Breadcrumbs": {
     "Home": "Home",
     "addProduct": "Add wine"
+  },
+  "FooterPage": {
+    "Contact": "Contact",
+    "Tel": "Tel",
+    "Address": "Address",
+    "visit-us": "Visit Us",
+    "mon-fri": "Mon-Fri",
+    "Saturday": "Saturday",
+    "Subscribe": "Subscribe",
+    "fill-glass": "Fill a glass & subscribe",
+    "email-checkbox": "Yes, subscribe me to your newsletter.",
+    "Submit": "Submit",
+    "Shipping": "Shipping & Returns",
+    "FAQ": "FAQ",
+    "Payment": "Payment Methods",
+    "Store": "Store Policy"
   }
 }
